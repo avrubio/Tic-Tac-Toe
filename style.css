@@ -14,13 +14,30 @@ h1 {
   flex-direction: row;
   height: 200px;
 }
-
-.col1,
-.col2,
-.col3 {
+.box {
   border: black 2px solid;
   width: 30px;
   display: flex;
   flex-direction: row;
   width: 200px;
+}
+
+.x:after {
+  padding-left: 58px;
+  padding-top: 50px;
+  content: "❎";
+  font-size: 90px;
+  color: #fff;
+  line-height: 100px;
+  text-align: center;
+}
+
+.o:after {
+  padding-left: 58px;
+  padding-top: 50px;
+  content: "🅾️";
+  font-size: 90px;
+  color: blue;
+  line-height: 1;
+  text-align: center;
 }
