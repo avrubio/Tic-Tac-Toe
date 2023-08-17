@@ -32,6 +32,8 @@ h1 {
   text-align: center;
   margin-bottom: 70px;
   font-size: 3rem;
+  margin-top: 20px;
+  color: white;
 }
 table {
   height: 60vh;
@@ -54,14 +56,14 @@ table::after {
     from var(--gradient-angle),
     rgba(0, 0, 255, 0.5),
     rgba(157, 0, 255, 0.5),
-    rgba(255, 0, 251, 0.5),
+    /* rgba(255, 0, 251, 0.5),
     rgba(255, 0, 55, 0.7),
     rgba(255, 0, 0, 0.5),
     rgba(255, 132, 0, 0.7),
     rgba(242, 255, 0, 0.5),
     rgba(132, 255, 0, 0.7),
-    rgba(0, 255, 191, 0.5),
-    rgba(0, 234, 255, 0.5),
+    rgba(0, 255, 191, 0.5), */
+      rgba(0, 234, 255, 0.5),
     rgba(0, 47, 255, 0.5)
   );
   border-radius: inherit;
@@ -114,12 +116,67 @@ table::after {
   right: -550px;
   bottom: 300px;
 }
-.scoreBoard {
-  border: solid black 2px;
+.scoreBorder {
+  /* border: solid black 2px; */
+  background-color: var(--clr-1);
   padding: 100px 100px;
   position: relative;
   right: -550px;
   bottom: 300px;
+  aspect-ratio: 1 / 1.5;
+  background: var(--clr-1);
+  border-radius: 0.5rem;
+  position: relative;
+  margin: 0 auto;
+}
+
+.scoreBorder::after,
+.scoreBorder::before {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    rgba(0, 0, 255, 0.5),
+    rgba(157, 0, 255, 0.5),
+    /* rgba(255, 0, 251, 0.5),
+    rgba(255, 0, 55, 0.7),
+    rgba(255, 0, 0, 0.5),
+    rgba(255, 132, 0, 0.7),
+    rgba(242, 255, 0, 0.5),
+    rgba(132, 255, 0, 0.7),
+    rgba(0, 255, 191, 0.5), */
+      rgba(0, 234, 255, 0.5),
+    rgba(0, 47, 255, 0.5)
+  );
+  border-radius: inherit;
+  animation: rotation 20s linear infinite;
+}
+.scoreBorder::after {
+  filter: blur(3.5rem);
+}
+
+.scoreBox {
+  border: solid black 2px;
+  padding: 60px 80px;
+  position: absolute;
+  right: 21px;
+  bottom: 20px;
+}
+.scorePlayerX {
+  padding: 60px 80px;
+  position: absolute;
+  right: 10px;
+  bottom: 100px;
+}
+
+.scoreTitle {
+  padding-bottom: 20px;
+  color: white;
+}
+svg {
+  color: black;
 }
 .x:after {
   padding-left: 58px;
