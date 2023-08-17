@@ -15,6 +15,8 @@ const container = document.querySelector(".container");
 //player counter
 let currentPlayer = "X";
 
+const ticTacToe = document.querySelector(".ticTac");
+const boxes = document.querySelectorAll(".box");
 // able to click on a square to add X first and then O, and so on
 // Listen for a click event on the 'container' element
 container.addEventListener("click", function (event) {
@@ -36,10 +38,14 @@ container.addEventListener("click", function (event) {
     }
     // Toggle players
     currentPlayer = currentPlayer === "X" ? "O" : "X";
+    //prints who's turn is next
+
+    //grabs the h1 element to display message
+    let title = document.querySelector("h1");
+    //displays message on who's turn it is
+    title.innerText = `${currentPlayer} your turn!`;
   }
 });
-
-// shown a message after each turn for if I win, lose, tie or who's turn it is next
 
 // be shown a message when I win, lose or tie
 
