@@ -17,8 +17,8 @@ let currentPlayer = "X";
 
 const ticTacToe = document.querySelector(".ticTac");
 const boxes = document.querySelectorAll(".box");
-// able to click on a square to add X first and then O, and so on
-// Listen for a click event on the 'container' element
+
+// listen for a click event on the 'container' element
 container.addEventListener("click", function (event) {
   // Check if the clicked element has the 'box' class (a game box)
   // and also check if it doesn't have any content (text)
@@ -36,7 +36,7 @@ container.addEventListener("click", function (event) {
       //adds class to the box to add the O emoji
       event.target.classList.add("o");
     }
-    // Toggle players
+    // toggle players
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     //prints who's turn is next
 
@@ -44,6 +44,43 @@ container.addEventListener("click", function (event) {
     let title = document.querySelector("h1");
     //displays message on who's turn it is
     title.innerText = `${currentPlayer} your turn!`;
+    // function that checks if all elements at given indices have a specific class
+    function checkWinForIndices(indices, className) {
+      // Use the every() method to check if all elements at the given indices have the specified class
+      return indices.every((index) =>
+        boxes[index].classList.contains(className)
+      );
+    }
+    // function that checks for a win based on a given class name
+    function checkForWin(className) {
+      // winning combinations based on the index of the boxes
+      const winningCombos = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+
+      // Iterate through winning combinations
+      for (const combo of winningCombos) {
+        // If the specified class has won based on the current combination
+        if (checkWinForIndices(combo, className)) {
+          // Print the winning message
+          console.log(`Player ${className.toUpperCase()} won!`);
+          return;
+        }
+      }
+    }
+
+    // Call the checkForWin function to check for a win by "o" class
+    checkForWin("o");
+
+    // Call the checkForWin function to check for a win by "x" class
+    checkForWin("x");
   }
 });
 
