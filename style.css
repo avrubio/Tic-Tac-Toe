@@ -1,21 +1,89 @@
 * {
-  /* background-color: grey; */
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+/* define a custom property named --gradient-angle */
+/* this property will store an angle value for gradients */
+@property --gradient-angle {
+  /* Specify the expected syntax for the value (angle in this case) */
+  syntax: "<angle>";
+
+  /* Set the initial value of the property to 0 degrees */
+  initial-value: 0deg;
+
+  /* Indicate that the property should not inherit its value */
+  inherits: false;
+}
+:root {
+  --clr-1: #69b2ca;
+  --clr-2: #75a9b1;
+  --clr-3: #59a5b4;
+  --clr-4: #66bbc4;
+  --clr-5: #a2c1a5;
+}
+body {
+  background: var(--clr-2);
+  min-height: 80vh;
+  display: grid;
+  place-content: center;
 }
 h1 {
   text-align: center;
+  margin-bottom: 70px;
+  font-size: 3rem;
 }
 table {
-  background-color: black;
-  border-radius: 10px;
-  width: 600px; /* Adjust the width as needed */
+  height: 60vh;
+  aspect-ratio: 1 / 1.5;
+  background: var(--clr-1);
+  border-radius: 0.5rem;
+  position: relative;
+  width: 37.5rem; /* Adjust the width as needed */
   margin: 0 auto; /* Center the background container horizontally */
   padding: 20px;
+}
+
+table::before,
+table::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    rgba(0, 0, 255, 0.5),
+    rgba(157, 0, 255, 0.5),
+    rgba(255, 0, 251, 0.5),
+    rgba(255, 0, 55, 0.7),
+    rgba(255, 0, 0, 0.5),
+    rgba(255, 132, 0, 0.7),
+    rgba(242, 255, 0, 0.5),
+    rgba(132, 255, 0, 0.7),
+    rgba(0, 255, 191, 0.5),
+    rgba(0, 234, 255, 0.5),
+    rgba(0, 47, 255, 0.5)
+  );
+  border-radius: inherit;
+  animation: rotation 20s linear infinite;
+}
+
+table::after {
+  filter: blur(3.5rem);
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
 }
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: grey; */
 }
 .row,
 .row2,
@@ -26,10 +94,11 @@ table {
   height: 200px;
 }
 .box {
-  /* border: black 2px solid; */
+  border: white 0.1px solid;
+  border-radius: 5px;
   /* box-shadow: 0 0 5px 5px rgba(10, 254, 104, 0.3);
    */
-  animation: gradientAnimation 5s infinite linear;
+  /* animation: gradientAnimation 5s infinite linear; */
   box-shadow: 0 0 10px 5px transparent;
   width: 30px;
   display: flex;
@@ -37,42 +106,9 @@ table {
   width: 200px;
 }
 
-@keyframes gradientAnimation {
-  0% {
-    box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.5);
-  }
-  10% {
-    box-shadow: 0 0 10px 5px rgba(157, 0, 255, 0.5);
-  }
-  20% {
-    box-shadow: 0 0 10px 5px rgba(255, 0, 251, 0.5);
-  }
-  30% {
-    box-shadow: 0 0 10px 5px rgba(255, 0, 55, 0.7);
-  }
-  40% {
-    box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 10px 5px rgba(255, 132, 0, 0.7);
-  }
-  60% {
-    box-shadow: 0 0 10px 5px rgba(242, 255, 0, 0.5);
-  }
-  70% {
-    box-shadow: 0 0 10px 5px rgba(132, 255, 0, 0.7);
-  }
-  80% {
-    box-shadow: 0 0 10px 5px rgba(0, 255, 191, 0.5);
-  }
-  90% {
-    box-shadow: 0 0 10px 5px rgba(0, 234, 255, 0.5);
-  }
-  100% {
-    box-shadow: 0 0 10px 5px rgba(0, 47, 255, 0.5);
-  }
+p {
+  font-size: large;
 }
-
 .x:after {
   padding-left: 58px;
   padding-top: 50px;
@@ -91,4 +127,72 @@ table {
   color: blue;
   line-height: 1;
   text-align: center;
+}
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+  table {
+    /* background-color: #63c971; */
+    color: #fff;
+    height: 30px;
+    width: 40px;
+  }
+}
+
+/* For Tablet View */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .gfg-div {
+    width: 400px;
+    height: 400px;
+    background-color: orange;
+    color: black;
+  }
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  table {
+    width: 10px;
+    height: 20px;
+    /* background-color: red; */
+    color: #fff;
+  }
+  .row,
+  .row2,
+  .row3 {
+    /* border: black 2px solid; */
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+  }
+  .box {
+    /* border: black 2px solid; */
+    /* box-shadow: 0 0 5px 5px rgba(10, 254, 104, 0.3);
+     */
+    animation: gradientAnimation 5s infinite linear;
+    box-shadow: 0 0 10px 5px transparent;
+
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+  }
+  .x:after {
+    padding-left: 30px;
+    padding-top: 5px;
+    content: "❎";
+    font-size: 40px;
+    color: #fff;
+    line-height: 100px;
+    text-align: center;
+  }
+
+  .o:after {
+    padding-left: 34px;
+    padding-top: 35px;
+    content: "🅾️";
+    font-size: 40px;
+    color: blue;
+    line-height: 1;
+    text-align: center;
+  }
 }
