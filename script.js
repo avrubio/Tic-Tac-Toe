@@ -20,7 +20,12 @@ let currentPlayer = "X";
 container.addEventListener("click", function (event) {
   // Check if the clicked element has the 'box' class (a game box)
   // and also check if it doesn't have any content (text)
-  if (event.target.classList.contains("box")) {
+  if (
+    event.target.classList.contains("box") &&
+    // not be able to click the same square twice, checks if the box already has an x or o class
+    !event.target.classList.contains("x") &&
+    !event.target.classList.contains("o")
+  ) {
     // event.target.textContent = currentPlayer;
     if (currentPlayer === "X") {
       //adds class to the box to add the X emoji
@@ -33,8 +38,6 @@ container.addEventListener("click", function (event) {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
   }
 });
-
-// not be able to click the same square twice
 
 // shown a message after each turn for if I win, lose, tie or who's turn it is next
 

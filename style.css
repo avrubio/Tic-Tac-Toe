@@ -1,10 +1,21 @@
+* {
+  /* background-color: grey; */
+}
 h1 {
   text-align: center;
+}
+table {
+  background-color: black;
+  border-radius: 10px;
+  width: 600px; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the background container horizontally */
+  padding: 20px;
 }
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-color: grey; */
 }
 .row,
 .row2,
@@ -15,11 +26,51 @@ h1 {
   height: 200px;
 }
 .box {
-  border: black 2px solid;
+  /* border: black 2px solid; */
+  /* box-shadow: 0 0 5px 5px rgba(10, 254, 104, 0.3);
+   */
+  animation: gradientAnimation 5s infinite linear;
+  box-shadow: 0 0 10px 5px transparent;
   width: 30px;
   display: flex;
   flex-direction: row;
   width: 200px;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.5);
+  }
+  10% {
+    box-shadow: 0 0 10px 5px rgba(157, 0, 255, 0.5);
+  }
+  20% {
+    box-shadow: 0 0 10px 5px rgba(255, 0, 251, 0.5);
+  }
+  30% {
+    box-shadow: 0 0 10px 5px rgba(255, 0, 55, 0.7);
+  }
+  40% {
+    box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 10px 5px rgba(255, 132, 0, 0.7);
+  }
+  60% {
+    box-shadow: 0 0 10px 5px rgba(242, 255, 0, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 10px 5px rgba(132, 255, 0, 0.7);
+  }
+  80% {
+    box-shadow: 0 0 10px 5px rgba(0, 255, 191, 0.5);
+  }
+  90% {
+    box-shadow: 0 0 10px 5px rgba(0, 234, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgba(0, 47, 255, 0.5);
+  }
 }
 
 .x:after {
