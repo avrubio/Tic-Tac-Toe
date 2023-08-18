@@ -153,3 +153,22 @@ resetWholeGame.addEventListener("click", () => {
   //resets first player to X
   currentPlayer = "X";
 });
+
+//light dark mode
+const toggleSwitch = document.querySelector(".switch");
+
+toggleSwitch.addEventListener("change", () => {
+  const checkbox = toggleSwitch.parentElement.querySelector(
+    "input[type='checkbox']"
+  );
+
+  if (checkbox.checked) {
+    // The input is checked
+    document.body.style.backgroundColor = "white";
+  } else {
+    // The input is not checked
+    document.body.style.backgroundColor = ""; // Remove the background color
+  }
+});
+
+console.log(toggleSwitch);
