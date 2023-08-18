@@ -41,7 +41,7 @@ h1 {
 table {
   height: 60vh;
   aspect-ratio: 1 / 1.5;
-  background: var(--clr-1);
+  /* background: var(--clr-1); */
   border-radius: 0.5rem;
   position: relative;
   width: 37.5rem; /* Adjust the width as needed */
