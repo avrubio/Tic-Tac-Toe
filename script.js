@@ -7,7 +7,7 @@ const ticTacToe = document.querySelector(".ticTac");
 const boxes = document.querySelectorAll(".box");
 
 // listen for a click event on the 'container' element
-container.addEventListener("click", function (event) {
+function handleClick(event) {
   // Check if the clicked element has the 'box' class (a game box)
   // and also check if it doesn't have any content
   if (
@@ -61,6 +61,8 @@ container.addEventListener("click", function (event) {
 
           // be shown a message when I win, lose or tie
           title.innerText = `Player ${className.toUpperCase()} won!`;
+          // Remove the click event listener once a winner is determined
+          container.removeEventListener("click", handleClick);
 
           return;
         }
@@ -73,7 +75,9 @@ container.addEventListener("click", function (event) {
     // call the checkForWin function to check for a win by "x" class
     checkForWin("x");
   }
-});
+}
+// Add the click event listener using the defined function
+container.addEventListener("click", handleClick);
 
 // should not be able to continue playing once I win, lose, or tie
 
