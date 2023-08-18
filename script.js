@@ -4,6 +4,7 @@ const container = document.querySelector(".container");
 let currentPlayer = "X";
 let playerXCounter = 0;
 let playerOCounter = 0;
+
 const ticTacToe = document.querySelector(".ticTac");
 const boxes = document.querySelectorAll(".box");
 //grabs the x player box
@@ -11,7 +12,7 @@ const playerX = document.querySelector("#playerXScore");
 
 const playerO = document.querySelector("#playerOScore");
 
-// listen for a click event on the 'container' element
+// function for a click event on the 'container' element
 function handleClick(event) {
   // Check if the clicked element has the 'box' class (a game box)
   // and also check if it doesn't have any content
@@ -63,7 +64,7 @@ function handleClick(event) {
         // if the specified class has won based on the current combination
         if (checkWinForIndices(combo, className)) {
           // print the winning message
-
+          let title = document.querySelector("h1");
           // be shown a message when I win, lose or tie
           title.innerText = `Player ${className.toUpperCase()} won!`;
 
@@ -72,9 +73,11 @@ function handleClick(event) {
           container.removeEventListener("click", handleClick);
 
           if (className == "x") {
-            return (playerX.innerText = playerXCounter + 1);
+            playerXCounter++;
+            return (playerX.innerText = playerXCounter);
           } else if (className == "o") {
-            return (playerO.innerText = playerOCounter + 1);
+            playerOCounter++;
+            return (playerO.innerText = playerOCounter);
           }
           return;
         }
@@ -88,25 +91,65 @@ function handleClick(event) {
     checkForWin("x");
   }
 }
+//starting number for rounds won
+playerX.innerText = playerXCounter;
+playerO.innerText = playerOCounter;
 // Add the click event listener using the defined function
 container.addEventListener("click", handleClick);
 
-//----ROUND WINNINGS
-playerX.innerText = playerXCounter;
-playerO.textContent = playerOCounter;
-// console.log(playerO);
-// if (className.classList.contains("x")) {
-//   return playerXCounter++;
-// }
-//grabs the h1 element to display message
-let title = document.querySelector("h1");
-title.addEventListener("change", () => {
-  if (title.innerText.contains("x")) {
-    return playerXCounter++;
-  }
-});
-
-console.log(title);
 // RESET GAME BUTTON
 
 // I should be able to play the game again without refreshing the page
+//grabs the reset game button
+const resetGame = document.querySelector("#resetGame");
+//listens for a click event
+resetGame.addEventListener("click", () => {
+  //for each box in the container
+  boxes.forEach((box) => {
+    //checks if each box has either and o or x class
+    if (box.classList.contains("x") || box.classList.contains("o")) {
+      //removes the class to remove the x or o displayed on the board
+      box.classList.remove("x");
+      box.classList.remove("o");
+    }
+    //resets the title back to original Lets Play Tic Tac Toe
+    let title = document.querySelector("h1");
+    // be shown a message when I win, lose or tie
+    title.innerText = `Lets play Tic-Tac-Toe!`;
+  });
+  //resets the container to start the game over but saves the rounds
+  container.addEventListener("click", handleClick);
+  //resets first player to X
+  currentPlayer = "X";
+});
+
+//Reset the whole board----
+//grabs the reset whole board button
+const resetWholeGame = document.querySelector("#resetBoard");
+
+//listens to click on btn
+resetWholeGame.addEventListener("click", () => {
+  //for each box in the container
+  boxes.forEach((box) => {
+    //checks if each box has either and o or x class
+    if (box.classList.contains("x") || box.classList.contains("o")) {
+      //removes the class to remove the x or o displayed on the board
+      box.classList.remove("x");
+      box.classList.remove("o");
+    }
+    //resets the title back to original Lets Play Tic Tac Toe
+    let title = document.querySelector("h1");
+    // be shown a message when I win, lose or tie
+    title.innerText = `Lets play Tic-Tac-Toe!`;
+    //starting number for rounds won
+  });
+  //resets the round counter
+  playerOCounter = 0;
+  playerXCounter = 0;
+  playerX.innerText = playerXCounter;
+  playerO.innerText = playerOCounter;
+
+  container.addEventListener("click", handleClick);
+  //resets first player to X
+  currentPlayer = "X";
+});
