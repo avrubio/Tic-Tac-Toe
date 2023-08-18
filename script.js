@@ -8,9 +8,9 @@ let playerOCounter = 0;
 const ticTacToe = document.querySelector(".ticTac");
 const boxes = document.querySelectorAll(".box");
 //grabs the x player box
-const playerX = document.querySelector("#playerXScore");
+const playerXScore = document.querySelector("#playerXScore");
 
-const playerO = document.querySelector("#playerOScore");
+const playerOScore = document.querySelector("#playerOScore");
 
 // function for a click event on the 'container' element
 function handleClick(event) {
@@ -74,10 +74,10 @@ function handleClick(event) {
 
           if (className == "x") {
             playerXCounter++;
-            return (playerX.innerText = playerXCounter);
+            return (playerXScore.innerText = playerXCounter);
           } else if (className == "o") {
             playerOCounter++;
-            return (playerO.innerText = playerOCounter);
+            return (playerOScore.innerText = playerOCounter);
           }
           return;
         }
@@ -92,8 +92,8 @@ function handleClick(event) {
   }
 }
 //starting number for rounds won
-playerX.innerText = playerXCounter;
-playerO.innerText = playerOCounter;
+playerXScore.innerText = playerXCounter;
+playerOScore.innerText = playerOCounter;
 // Add the click event listener using the defined function
 container.addEventListener("click", handleClick);
 
@@ -146,8 +146,8 @@ resetWholeGame.addEventListener("click", () => {
   //resets the round counter
   playerOCounter = 0;
   playerXCounter = 0;
-  playerX.innerText = playerXCounter;
-  playerO.innerText = playerOCounter;
+  playerXScore.innerText = playerXCounter;
+  playerOScore.innerText = playerOCounter;
 
   container.addEventListener("click", handleClick);
   //resets first player to X
@@ -161,13 +161,25 @@ toggleSwitch.addEventListener("change", () => {
   const checkbox = toggleSwitch.parentElement.querySelector(
     "input[type='checkbox']"
   );
-
+  const scoreboard = document.querySelector(".scoreBorder");
   if (checkbox.checked) {
     // The input is checked
-    document.body.style.backgroundColor = "white";
+    document.body.style.backgroundColor = "black";
+    //changes the scoreboard color
+    scoreboard.style.backgroundColor = "black";
+    //text of xo and score
+    playerOScore.style.color = "white";
+    playerXScore.style.color = "white";
+    playerO.style.color = "white";
+    playerX.style.color = "white";
   } else {
     // The input is not checked
     document.body.style.backgroundColor = ""; // Remove the background color
+    scoreboard.style.backgroundColor = "";
+    playerOScore.style.color = "black";
+    playerXScore.style.color = "black";
+    playerO.style.color = "black";
+    playerX.style.color = "black";
   }
 });
 
