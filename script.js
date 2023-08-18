@@ -2,9 +2,14 @@
 const container = document.querySelector(".container");
 //player counter
 let currentPlayer = "X";
-
+let playerXCounter = 0;
+let playerOCounter = 0;
 const ticTacToe = document.querySelector(".ticTac");
 const boxes = document.querySelectorAll(".box");
+//grabs the x player box
+const playerX = document.querySelector("#playerXScore");
+
+const playerO = document.querySelector("#playerOScore");
 
 // listen for a click event on the 'container' element
 function handleClick(event) {
@@ -61,9 +66,16 @@ function handleClick(event) {
 
           // be shown a message when I win, lose or tie
           title.innerText = `Player ${className.toUpperCase()} won!`;
+
+          // should not be able to continue playing once I win, lose, or tie
           // Remove the click event listener once a winner is determined
           container.removeEventListener("click", handleClick);
 
+          if (className == "x") {
+            return (playerX.innerText = playerXCounter + 1);
+          } else if (className == "o") {
+            return (playerO.innerText = playerOCounter + 1);
+          }
           return;
         }
       }
@@ -79,8 +91,22 @@ function handleClick(event) {
 // Add the click event listener using the defined function
 container.addEventListener("click", handleClick);
 
-// should not be able to continue playing once I win, lose, or tie
+//----ROUND WINNINGS
+playerX.innerText = playerXCounter;
+playerO.textContent = playerOCounter;
+// console.log(playerO);
+// if (className.classList.contains("x")) {
+//   return playerXCounter++;
+// }
+//grabs the h1 element to display message
+let title = document.querySelector("h1");
+title.addEventListener("change", () => {
+  if (title.innerText.contains("x")) {
+    return playerXCounter++;
+  }
+});
 
+console.log(title);
 // RESET GAME BUTTON
 
 // I should be able to play the game again without refreshing the page
