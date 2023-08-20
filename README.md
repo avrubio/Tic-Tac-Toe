@@ -20,8 +20,6 @@ CSS
 
 ## Approach:
 
-It looks like you've provided a detailed piece of JavaScript code that implements a Tic Tac Toe game with various features, including player turns, win detection, scoring, reset buttons, and a light/dark mode toggle. Let me break down the code for you:
-
 1. **Setup and Variables:**
 
    - The code begins by setting up variables like `container`, `currentPlayer`, and score counters for both players.
@@ -58,11 +56,6 @@ It looks like you've provided a detailed piece of JavaScript code that implement
 
    - The code sets the initial scores to 0 and attaches the `handleClick` function to the container's click event.
    - The reset buttons and toggle switch have their own event listeners that execute specific actions when clicked or changed.
-
-8. **Note:**
-   - The code seems to be well-organized and structured.
-   - However, one thing to consider is that using the `.classList` approach for handling the game state (whether a box has an "x" or "o" class) can be a bit cumbersome. A more efficient approach might involve using a data structure to keep track of the game state, which could simplify some of the win detection logic.
-   - Additionally, if you plan to expand or modify the game in the future, consider encapsulating functionalities into separate functions or classes to improve maintainability and readability.
 
 ## User Stories
 
