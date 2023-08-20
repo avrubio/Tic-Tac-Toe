@@ -350,22 +350,22 @@ input:checked + .slider:before {
     width: 80px;
   }
   .x:after {
-    padding-left: 30px;
-    padding-top: 5px;
+    padding-left: 18px;
+    padding-top: 10px;
     content: "❎";
     font-size: 40px;
     color: #fff;
-    line-height: 100px;
+    line-height: 50px;
     text-align: center;
   }
 
   .o:after {
-    padding-left: 34px;
+    padding-left: 18px;
     padding-top: 35px;
     content: "🅾️";
     font-size: 40px;
     color: blue;
-    line-height: 1;
+    line-height: 1px;
     text-align: center;
   }
 
