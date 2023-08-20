@@ -4,12 +4,12 @@ const container = document.querySelector(".container");
 let currentPlayer = "X";
 let playerXCounter = 0;
 let playerOCounter = 0;
-
+//
 const ticTacToe = document.querySelector(".ticTac");
 const boxes = document.querySelectorAll(".box");
 //grabs the x player box
 const playerXScore = document.querySelector("#playerXScore");
-
+//grabs the O player box
 const playerOScore = document.querySelector("#playerOScore");
 
 // function for a click event on the 'container' element
@@ -89,21 +89,28 @@ function handleClick(event) {
 
     // call the checkForWin function to check for a win by "x" class
     checkForWin("x");
+
+    //checks every box to see if there is a x or o class
+    const allBoxesFilled = Array.from(boxes).every(
+      (box) => box.classList.contains("x") || box.classList.contains("o")
+    );
+
+    //if all boxes are filled display the draw message
+    if (allBoxesFilled) {
+      let title = document.querySelector("h1");
+      title.innerText = "It's a draw!";
+      container.removeEventListener("click", handleClick);
+    }
   }
 }
-//starting number for rounds won
-playerXScore.innerText = playerXCounter;
-playerOScore.innerText = playerOCounter;
-// Add the click event listener using the defined function
-container.addEventListener("click", handleClick);
 
 // RESET GAME BUTTON
 
 // I should be able to play the game again without refreshing the page
 //grabs the reset game button
 const resetGame = document.querySelector("#resetGame");
-//listens for a click event
-resetGame.addEventListener("click", () => {
+
+function resetSingleGame() {
   //for each box in the container
   boxes.forEach((box) => {
     //checks if each box has either and o or x class
@@ -121,14 +128,12 @@ resetGame.addEventListener("click", () => {
   container.addEventListener("click", handleClick);
   //resets first player to X
   currentPlayer = "X";
-});
+}
 
 //Reset the whole board----
 //grabs the reset whole board button
 const resetWholeGame = document.querySelector("#resetBoard");
-
-//listens to click on btn
-resetWholeGame.addEventListener("click", () => {
+function resetWholeGameBoard() {
   //for each box in the container
   boxes.forEach((box) => {
     //checks if each box has either and o or x class
@@ -152,12 +157,11 @@ resetWholeGame.addEventListener("click", () => {
   container.addEventListener("click", handleClick);
   //resets first player to X
   currentPlayer = "X";
-});
+}
 
 //light dark mode
 const toggleSwitch = document.querySelector(".switch");
-
-toggleSwitch.addEventListener("change", () => {
+toggleTheme = () => {
   const checkbox = toggleSwitch.parentElement.querySelector(
     "input[type='checkbox']"
   );
@@ -181,6 +185,17 @@ toggleSwitch.addEventListener("change", () => {
     playerO.style.color = "black";
     playerX.style.color = "black";
   }
-});
+};
 
-console.log(toggleSwitch);
+//starting number for rounds won
+playerXScore.innerText = playerXCounter;
+playerOScore.innerText = playerOCounter;
+// Add the click event listener using the defined function
+container.addEventListener("click", handleClick);
+
+//Light dark theme button
+toggleSwitch.addEventListener("click", toggleTheme);
+//listens to click on btn to reset whole game
+resetWholeGame.addEventListener("click", resetWholeGameBoard);
+//listens for a click to reset the game but not the whole board
+resetGame.addEventListener("click", resetSingleGame);
