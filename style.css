@@ -1,6 +1,6 @@
 * {
   margin: 0 auto;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "ComputerSpeakv03Regular";
   font-weight: normal;
   font-style: normal;
@@ -197,6 +197,7 @@ input:checked + .slider:before {
   /* border: solid black 2px; */
   background-color: var(--clr-1);
   padding: 50px 100px;
+  padding: 3em 6.25em;
   position: relative;
   right: -550px;
   bottom: 400px;
@@ -324,13 +325,18 @@ input:checked + .slider:before {
     /* background-color: red; */
     color: #fff;
   }
+
+  h1 {
+    font-size: 18px;
+    text-align: center;
+  }
   .row,
   .row2,
   .row3 {
     /* border: black 2px solid; */
     display: flex;
     flex-direction: row;
-    height: 100px;
+    height: 80px;
   }
   .box {
     /* border: black 2px solid; */
@@ -341,7 +347,7 @@ input:checked + .slider:before {
 
     display: flex;
     flex-direction: row;
-    width: 100px;
+    width: 80px;
   }
   .x:after {
     padding-left: 30px;
@@ -361,5 +367,94 @@ input:checked + .slider:before {
     color: blue;
     line-height: 1;
     text-align: center;
+  }
+
+  /* The switch - the box around the slider  from w3schools*/
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 3.75em;
+    height: 34px;
+    bottom: -100px;
+  }
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .buttons {
+    /* position: relative; */
+    right: 3px;
+    text-align: center;
+    top: 270px;
+  }
+
+  .scoreBorder {
+    /* border: solid black 2px; */
+    background-color: var(--clr-1);
+    padding: 50px 100px;
+    position: relative;
+    right: 0px;
+    bottom: 30px;
+    /* aspect-ratio: 1 / 1.5; */
+    background: var(--clr-1);
+    border-radius: 0.5rem;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .scoreBorder::after,
+  .scoreBorder::before {
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+    z-index: -1;
+    background: conic-gradient(
+      from var(--gradient-angle),
+      rgba(0, 0, 255, 0.5),
+      rgba(157, 0, 255, 0.5),
+      /* rgba(255, 0, 251, 0.5),
+      rgba(255, 0, 55, 0.7),
+      rgba(255, 0, 0, 0.5),
+      rgba(255, 132, 0, 0.7),
+      rgba(242, 255, 0, 0.5),
+      rgba(132, 255, 0, 0.7),
+      rgba(0, 255, 191, 0.5), */
+        rgba(0, 234, 255, 0.5),
+      rgba(0, 47, 255, 0.5)
+    );
+    border-radius: inherit;
+    animation: rotation 20s linear infinite;
+  }
+  .scoreBorder::after {
+    filter: blur(3.5rem);
   }
 }
