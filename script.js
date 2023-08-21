@@ -96,7 +96,7 @@ function handleClick(event) {
     );
 
     //if all boxes are filled display the draw message
-    if (allBoxesFilled) {
+    if (allBoxesFilled && !checkForWin("o") && !checkForWin("x")) {
       let title = document.querySelector("h1");
       title.innerText = "It's a draw!";
       container.removeEventListener("click", handleClick);
